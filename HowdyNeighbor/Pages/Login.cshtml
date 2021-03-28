@@ -1,0 +1,25 @@
+﻿@page
+@model HowdyNeighbor.Pages.LoginModel
+@{ ViewData["Title"] = "Login"; }
+<div class="container" style="width:50%; background-color:#CADCE6; border:solid; border-color:black;">
+    <form>
+        <br />
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 text-center"> <a href="#" class="btn btn-primary facebook"> <span>Login with Facebook</span> <i class="fa fa-facebook"></i> </a> </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 text-center"> <a href="#" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google-plus"></i> </a> </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput">
+        </div>
+        <button type="submit" class="btn btn-primary" asp-page="/Index_LoggedIn">Submit</button>
+        <p style="padding-top:10px;">Don't have an account? Create one <a asp-page="/CreateAccount">here</a></p>
+    </form>
+    <br />
+</div>

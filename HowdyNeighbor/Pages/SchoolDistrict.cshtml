@@ -1,0 +1,156 @@
+﻿@page
+@model HowdyNeighbor.Pages.SchoolDistrictModel
+@{
+    ViewData["Title"] = "School District";
+}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+    }
+
+    table {
+        max-width: 100%;
+        box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.25);
+    }
+
+    tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    th {
+        background-color: #CADCE6;
+        color: black;
+        font-size: x-large;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 0.5em 1em;
+        font-size: x-large;
+    }
+</style>
+
+<h3 class="text-center">Local School District Information for: @Html.DisplayFor(model => model.SearchList.Address)<br /><strong></strong></h3>
+
+<div class="text-center">
+    <h5>How would you rate these findings?</h5>
+    <form method="post">
+        <select asp-for="SearchList.SchoolImportance">
+            <option value="0">No Rating</option>
+            <option value="1">1 (Poor)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Great)</option>
+        </select>&nbsp &nbsp
+        <input type="hidden" asp-for="SearchList.ID" />
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </form>
+</div>
+<br />
+
+<table>
+    <tr>
+        <th class="my-border">School District</th>
+        <th class="my-border">Grades Offered</th>
+    </tr>
+    <tr>
+        <td class="my-border"><span id="name"></span></td>
+        <td class="my-border"><span id="gradeLow"></span> - <span id="gradeHigh"></span></td>
+    </tr>
+</table>
+<br />
+<h4 style="text-align:center">
+    View more detailed information about the schools located near or within this district
+    <a target="_blank" id="url">here</a>
+</h4>
+<p style="font-size:small; text-align:center;">Howdy Neighbor has no affiliation with any of the websites we provide links to.</p>
+
+
+<script>
+    async function getSchoolDistrictName() {
+        const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+        const response = await axios.get('https://api.geocod.io/v1.6/geocode', {
+            params: {
+                q: searchedAddress,
+                fields: "school",
+                api_key: 'ff72568988944d667192024f60d93761910469d'
+            }
+        })
+        let schoolDistrictName = await response.data.results[0].fields.school_districts.unified.name;
+        return schoolDistrictName;
+    }
+    async function displayName() {
+        document.getElementById("name").innerHTML = await getSchoolDistrictName();
+    }
+        async function getSchoolGradeLow() {
+        const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+        const response = await axios.get('https://api.geocod.io/v1.6/geocode', {
+            params: {
+                q: searchedAddress,
+                fields: "school",
+                api_key: 'ff72568988944d667192024f60d93761910469d'
+            }
+        })
+        let schoolGradeLow = await response.data.results[0].fields.school_districts.unified.grade_low;
+        return schoolGradeLow;
+    }
+        async function displayGradeLow() {
+        document.getElementById("gradeLow").innerHTML = await getSchoolGradeLow();
+    }
+        async function getSchoolGradeHigh() {
+        const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+        const response = await axios.get('https://api.geocod.io/v1.6/geocode', {
+            params: {
+                q: searchedAddress,
+                fields: "school",
+                api_key: 'ff72568988944d667192024f60d93761910469d'
+            }
+        })
+        let schoolGradeHigh = await response.data.results[0].fields.school_districts.unified.grade_high;
+        return schoolGradeHigh;
+    }
+        async function displayGradeHigh() {
+        document.getElementById("gradeHigh").innerHTML = await getSchoolGradeHigh();
+    }
+
+        async function getLatitude() {
+        const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+        const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: searchedAddress,
+                key: 'AIzaSyBTM8Y11rAHhYrzULkGu6JMBo3BmhWtfSE'
+            }
+        })
+            let lat = response.data.results[0].geometry.location.lat;
+        return lat;
+    }
+    async function setSchoolDistrictWebsiteUrl() {
+            const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+            var latitude = await getLatitude();
+            var longitude = await getLongitude();
+            var url = "https://www.greatschools.org/search/search.page?lat=" + latitude + "&locationLabel=" +
+            searchedAddress + "&locationType=street_address&lon=" + longitude + "&st=public_charter&st=public&st=charter";
+            document.getElementById("url").setAttribute("href", url);
+    };
+        async function getLongitude() {
+        const searchedAddress = @Html.Raw(Json.Serialize(@Model.SearchList.Address));
+            const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                params: {
+                    address: searchedAddress,
+                    key: 'AIzaSyBTM8Y11rAHhYrzULkGu6JMBo3BmhWtfSE'
+                }
+            })
+            let lng = response.data.results[0].geometry.location.lng;
+            return lng;
+    }
+    displayName();
+    displayGradeLow();
+    displayGradeHigh();
+    setSchoolDistrictWebsiteUrl();
+</script>

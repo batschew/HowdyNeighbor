@@ -1,0 +1,11 @@
+﻿@page
+@model HowdyNeighbor.Pages.DeleteSearchListModel
+@{
+}
+
+<h3>Delete SearchList for @Html.DisplayFor(item => item.SearchList.Address)?</h3>
+<form method="post">
+    <input type="hidden" asp-for="SearchList.ID" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-page="./SearchList">Back to SearchList</a>
+</form>

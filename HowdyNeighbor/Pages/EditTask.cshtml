@@ -1,0 +1,26 @@
+﻿@page
+@model HowdyNeighbor.Pages.EditTaskModel
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<form method="post">
+    <strong>Update a custom task:</strong>
+    <input type="hidden" asp-for="ChecklistTask.ID" />
+    <input asp-for="ChecklistTask.Description" class="form-control" />
+    <span asp-validation-for="ChecklistTask.Description" class="text-danger"></span>
+    <br />
+    <strong>Enter date and time for task to be completed:</strong>
+    <br />
+    <input asp-for="ChecklistTask.Date" type="date" class="form-control" style="background-color:#ECFCFD;" />
+    <span asp-validation-for="ChecklistTask.Date" class="text-danger"></span>
+    <br />
+    <strong>Mark task as completed:</strong>
+    <input class="form-check-input" asp-for="ChecklistTask.IsComplete" />
+    <br />
+    <input type="submit" value="Update Task" class="btn btn-primary" />
+    <br />
+    <div>
+        <a asp-page="MovingList">Back to Moving CheckList</a>
+    </div>
+</form>

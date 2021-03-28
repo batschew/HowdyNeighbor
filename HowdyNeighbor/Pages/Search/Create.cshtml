@@ -1,0 +1,65 @@
+﻿@page
+@model HowdyNeighbor.Pages.Search.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>SearchList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SearchList.OwnerID" class="control-label"></label>
+                <input asp-for="SearchList.OwnerID" class="form-control" />
+                <span asp-validation-for="SearchList.OwnerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.Address" class="control-label"></label>
+                <input asp-for="SearchList.Address" class="form-control" />
+                <span asp-validation-for="SearchList.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.SchoolImportance" class="control-label"></label>
+                <input asp-for="SearchList.SchoolImportance" class="form-control" />
+                <span asp-validation-for="SearchList.SchoolImportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.CrimeImportance" class="control-label"></label>
+                <input asp-for="SearchList.CrimeImportance" class="form-control" />
+                <span asp-validation-for="SearchList.CrimeImportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.TrafficImportance" class="control-label"></label>
+                <input asp-for="SearchList.TrafficImportance" class="form-control" />
+                <span asp-validation-for="SearchList.TrafficImportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.AgeImportance" class="control-label"></label>
+                <input asp-for="SearchList.AgeImportance" class="form-control" />
+                <span asp-validation-for="SearchList.AgeImportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchList.PointsOfInterestImportance" class="control-label"></label>
+                <input asp-for="SearchList.PointsOfInterestImportance" class="form-control" />
+                <span asp-validation-for="SearchList.PointsOfInterestImportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

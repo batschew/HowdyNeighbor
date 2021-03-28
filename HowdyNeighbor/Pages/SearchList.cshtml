@@ -1,0 +1,480 @@
+﻿@page
+@model HowdyNeighbor.Pages.SearchListModel
+@{
+    ViewData["Title"] = "SearchList";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.25);
+    }
+
+    td {
+        padding: 10px;
+    }
+</style>
+
+@foreach (var item in Model.SearchList)
+{
+    <h3>SearchList for @Html.DisplayFor(modelItem => item.Address)</h3>
+    <form method="post" class="my-border-top table-background-color">
+        <table class="table my-border">
+            <tr>
+                <th class="my-border-none-left">Completed</th>
+                <th class="my-border">Moving Factor</th>
+                <th class="my-border">Information</th>
+                <th class="my-border">My Ranking</th>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Local School District Information</td>
+                <td class="my-border-none-top"><a asp-page="./SchoolDistrict" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.SchoolImportance == "0" || item.SchoolImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.SchoolImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.SchoolImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.SchoolImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.SchoolImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.SchoolImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Local Crime Data</td>
+                <td class="my-border-none-top"><a asp-page="./CrimeData" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.CrimeImportance == "0" || item.CrimeImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CrimeImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CrimeImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CrimeImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CrimeImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CrimeImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Local Traffic Density</td>
+                <td class="my-border-none-top"><a asp-page="./TrafficDensity" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.TrafficImportance == "0" || item.TrafficImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.TrafficImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.TrafficImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.TrafficImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.TrafficImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.TrafficImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Area Age Demographics</td>
+                <td class="my-border-none-top"><a asp-page="./AgeDemographics" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.AgeImportance == "0" || item.AgeImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.AgeImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.AgeImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.AgeImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.AgeImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.AgeImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Nearby Points of Interest</td>
+                <td class="my-border-none-top"><a asp-page="./PointsOfInterest" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.PointsOfInterestImportance == "0" || item.PointsOfInterestImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.PointsOfInterestImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.PointsOfInterestImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.PointsOfInterestImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.PointsOfInterestImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.PointsOfInterestImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Local Internet Providers</td>
+                <td class="my-border-none-top"><a asp-page="./InternetProviders" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.InternetProvidersImportance == "0" || item.InternetProvidersImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.InternetProvidersImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.InternetProvidersImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.InternetProvidersImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.InternetProvidersImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.InternetProvidersImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class="my-border-bottom my-border-right">
+                    @if (item.SchoolImportance != null)
+                    {
+                        {<input type="checkbox" checked />}
+                    }
+                    else
+                    {
+                        {<input type="checkbox" />}
+                    }
+                </td>
+                <td class="my-border-none-top">Cost of Living</td>
+                <td class="my-border-none-top"><a asp-page="./CostOfLiving" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-bottom my-border-left">
+                    @if (item.CostOfLivingImportance == "0" || item.CostOfLivingImportance == null)
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CostOfLivingImportance == "1")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CostOfLivingImportance == "2")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CostOfLivingImportance == "3")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CostOfLivingImportance == "4")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.CostOfLivingImportance == "5")
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
+        </table>
+        <button style="float: right;" class="btn btn-primary"><a asp-page="./DeleteSearchList" asp-route-id="@item.ID">Delete</a></button>
+    </form>
+}
