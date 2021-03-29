@@ -11,7 +11,10 @@
 <div class="text-center">
     <h2 class="text-shrink"><strong>Moving is stressful... Let Howdy Neighbor help!</strong></h2><br />
     <h3 class="text-shrink"><strong>Let's Get Started!</strong></h3><br />
-    <p style="font-size:18px !important;">Login or create an account <a asp-area="Identity" asp-page="/Account/Login">here</a> to save and view home search checklists or to create a custom pre-move task reminder checklist</p>
+    @if (SignInManager.IsSignedIn(User) == false)
+    {
+        <p style="font-size:18px !important;">Login or create an account <a asp-area="Identity" asp-page="/Account/Login">here</a> to save and view home search checklists or to create a custom pre-move task reminder checklist</p>
+    }
 </div>
 <br />
 <div class="row">

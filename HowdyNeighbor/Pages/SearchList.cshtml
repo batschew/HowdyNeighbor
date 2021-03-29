@@ -1,7 +1,7 @@
 ﻿@page
 @model HowdyNeighbor.Pages.SearchListModel
 @{
-    ViewData["Title"] = "SearchList";
+    ViewData["Title"] = "Home Search Checklists";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
         padding: 10px;
     }
 </style>
-
+<h2>@ViewData["Title"]</h2>
 @foreach (var item in Model.SearchList)
 {
     <h4>Home Search Checklist for <strong>@Html.DisplayFor(modelItem => item.Address)</strong></h4>
