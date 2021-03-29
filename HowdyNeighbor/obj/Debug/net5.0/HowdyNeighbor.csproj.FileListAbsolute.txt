@@ -231,3 +231,11 @@ C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Page
 C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\AddTask.cshtml.g.cs
 C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\DeleteTask.cshtml.g.cs
 C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\EditTask.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\AgeDemographicsNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\CostOfLivingNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\CrimeDataNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\InternetProvidersNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\PointsOfInterestNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\SchoolDistrictNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\SearchListNotLoggedIn.cshtml.g.cs
+C:\Users\Evan\Desktop\HN\HowdyNeighbor\HowdyNeighbor\obj\Debug\net5.0\Razor\Pages\TrafficDensityNotLoggedIn.cshtml.g.cs

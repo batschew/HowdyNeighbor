@@ -24,7 +24,7 @@
                 <th class="my-border-none-left">Completed</th>
                 <th class="my-border">Moving Factor</th>
                 <th class="my-border">Information</th>
-                <th class="my-border">My Ranking</th>
+                <th class="my-border">My Rating</th>
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
@@ -165,8 +165,8 @@
                         {<input type="checkbox" />}
                     }
                 </td>
-                <td class="my-border-none-top">Local Traffic Density</td>
-                <td class="my-border-none-top"><a asp-page="./TrafficDensity" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-none-top">Local Traffic Flow</td>
+                <td class="my-border-none-top"><a asp-page="./TrafficDensity" asp-route-id="@item.ID">View Map</a></td>
                 <td class="my-border-bottom my-border-left">
                     @if (item.TrafficImportance == "0" || item.TrafficImportance == null)
                     {
@@ -294,7 +294,7 @@
                     }
                 </td>
                 <td class="my-border-none-top">Nearby Points of Interest</td>
-                <td class="my-border-none-top"><a asp-page="./PointsOfInterest" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-none-top"><a asp-page="./PointsOfInterest" asp-route-id="@item.ID">View Map</a></td>
                 <td class="my-border-bottom my-border-left">
                     @if (item.PointsOfInterestImportance == "0" || item.PointsOfInterestImportance == null)
                     {

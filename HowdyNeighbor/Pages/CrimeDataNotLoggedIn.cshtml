@@ -1,0 +1,132 @@
+﻿@page
+@model HowdyNeighbor.Pages.CrimeDataNotLoggedInModel
+@{ ViewData["Title"] = "Crime Data"; }
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<h3 class="text-center">Local Crime Data for:<br /><strong>@ViewData["searchString"]</strong></h3>
+<br />
+
+<div class="text-center">
+    <h5>How would you rate these findings?</h5>
+    <form method="post" asp-page-handler="SearchListNotLoggedIn">
+        <select name="crimeImportance">
+            <option value="0">No Rating</option>
+            <option value="1">1 (Poor)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Great)</option>
+        </select>&nbsp &nbsp
+        <input type="submit" value="Save rating and return to checklist">
+    </form>
+</div>
+<br />
+<br />
+
+<h4 style="text-align:center">
+    View County Crime Data for <strong>@ViewData["searchString"] </strong>
+    <a target="_blank" id="url">here</a>
+</h4>
+<p style="font-size:small; text-align:center;">Howdy Neighbor has no affiliation with any of the websites we provide links to.</p>
+<br />
+<script>
+        async function getCity() {
+        const searchedAddress = @Html.Raw(Json.Serialize(ViewData["searchString"]));
+        const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: searchedAddress,
+                key: 'AIzaSyBTM8Y11rAHhYrzULkGu6JMBo3BmhWtfSE'
+            }
+        })
+        let city = '';
+        let addressComponents = response.data.results[0].address_components;
+        for (var i = 0; i < addressComponents.length; i++) {
+            if (addressComponents[i].types[0].includes('locality')) {
+                city = response.data.results[0].address_components[i].short_name;
+             }
+            }
+        return city;
+    }
+
+    async function getState() {
+        const searchedAddress = @Html.Raw(Json.Serialize(ViewData["searchString"]));
+        const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: searchedAddress,
+                key: 'AIzaSyBTM8Y11rAHhYrzULkGu6JMBo3BmhWtfSE'
+            }
+        })
+        let state = '';
+        let addressComponents = response.data.results[0].address_components;
+        for (var i = 0; i < addressComponents.length; i++) {
+            if (addressComponents[i].types[0].includes('administrative_area_level_1')) {
+                state = response.data.results[0].address_components[i].long_name;
+            }
+        }
+        return state;
+    }
+
+        async function getCounty() {
+        const searchedAddress = @Html.Raw(Json.Serialize(ViewData["searchString"]));
+        const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: searchedAddress,
+                key: 'AIzaSyBTM8Y11rAHhYrzULkGu6JMBo3BmhWtfSE'
+            }
+        })
+        let county = '';
+        let addressComponents = response.data.results[0].address_components;
+        for (var i = 0; i < addressComponents.length; i++) {
+            if (addressComponents[i].types[0].includes('administrative_area_level_2')) {
+                county = response.data.results[0].address_components[i].long_name;
+               }
+            }
+            return county;
+    }
+
+        async function getOri() {
+        const searchedAddress = @Html.Raw(Json.Serialize(ViewData["searchString"]));
+        const response = await axios.get('https://api.usa.gov/crime/fbi/sapi/api/agencies/list', {
+            params: {
+                API_KEY: 'OkLYMAyx8lyTeMRDGu08vqjnglGfgYtkO7qCjKEC',
+            }
+        })
+            let state = await getState();
+            let city = await getCity();
+            let county = await getCounty();
+            let cityOri = '';
+            let countyOri = '';
+            let crimeData = response.data;//[0].ori;
+      /*      if (city != null && city != '') {
+                for (var i = 0; i < crimeData.length; i++) {
+                    if (crimeData[i].agency_name.includes(city + ' Police Department') && crimeData[i].agency_type_name.includes('City') && crimeData[i].state_name.includes(state)) {
+                        cityOri = crimeData[i].ori;
+                    }
+                }
+            } */
+            for (var j = 0; j < crimeData.length; j++) {
+                if (crimeData[j].agency_name.includes(county + ` Sheriff's Office`) && crimeData[j].agency_type_name.includes('County') && crimeData[j].state_name.includes(state)) {
+                    countyOri = crimeData[j].ori;
+                        }
+            }
+           /* if (cityOri != '' && cityOri != null) {
+                return cityOri;
+
+            }
+            else { */
+                return countyOri;
+
+        }
+
+         async function setCrimeDataUrl() {
+            var ori = await getOri();
+             var url = "https://crime-data-explorer.fr.cloud.gov/explorer/agency/" + ori + "/crime";
+            document.getElementById("url").setAttribute("href", url);
+    };
+    getCity();
+    setCrimeDataUrl();
+    getOri();
+</script>
+
+

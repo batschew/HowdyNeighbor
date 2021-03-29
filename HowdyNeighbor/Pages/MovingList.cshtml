@@ -252,7 +252,8 @@
                 <option value="Contact local school district">Contact local school district</option>
             </optgroup>
         </select>
-        <input asp-for="ChecklistTask.Date" type="date" />
+        <input asp-for="ChecklistTask.Date" type="date" required />
+        <span class="validity"></span>
         <button type="submit">Add a Premade Task</button>
     </form>
 </div>

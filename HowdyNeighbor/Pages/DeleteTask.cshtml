@@ -4,29 +4,55 @@
     ViewData["Title"] = "Delete Task";
 }
 
-<strong>Delete this task?</strong>
-<dl class="row">
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.ChecklistTask.Description)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.ChecklistTask.Description)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.ChecklistTask.IsComplete)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.ChecklistTask.IsComplete)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.ChecklistTask.Date)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.ChecklistTask.Date)
-    </dd>
-</dl>
-<form method="post">
-    <input type="hidden" asp-for="ChecklistTask.ID" />
-    <input type="submit" value="Delete" class="btn btn-danger" /> |
-    <a asp-page="./MovingList">Back to Moving Checklist</a>
-</form>
+<br />
+<div style="
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        background-color: #CADCE6;
+        padding: 2%;
+        border: 1px solid slategray;
+        border-radius: 4px;
+        box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.25);
+">
+    <h3><strong>Delete this task?</strong></h3>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Task:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChecklistTask.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Status:
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ChecklistTask.IsComplete)
+            {
+                <span>Complete</span>
+            }
+            else
+            {
+                <span>Incomplete</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Date:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChecklistTask.Date)
+        </dd>
+    </dl>
+    <br />
+    <form method="post">
+        <input type="hidden" asp-for="ChecklistTask.ID" />
+        <button type="submit">Delete Task</button>
+        <br />
+        <br />
+        <div>
+            <a asp-page="./MovingList">Back to Moving Checklist</a>
+        </div>
+    </form>
+</div>
+<br />
