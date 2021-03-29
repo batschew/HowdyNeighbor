@@ -47,5 +47,27 @@ namespace HowdyNeighbor.Pages
 
             return RedirectToPage("./SearchList");
         }
+
+        public IActionResult OnPostSearchListNotLoggedIn(string searchString)
+        {
+            TempData["searchString"] = searchString;
+            TempData.Keep();
+
+            TempData["ageImportance"] = null;
+            TempData["crimeImportance"] = null;
+            TempData["trafficImportance"] = null;
+            TempData["pointsOfInterestImportance"] = null;
+            TempData["internetProvidersImportance"] = null;
+            TempData["costOfLivingImportance"] = null;
+            TempData["schoolImportance"] = null;
+
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return RedirectToPage("/SearchListNotLoggedIn");
+
+        }
     }
 }

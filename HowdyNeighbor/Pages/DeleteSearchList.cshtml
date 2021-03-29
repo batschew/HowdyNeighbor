@@ -3,9 +3,25 @@
 @{
 }
 
-<h3>Delete SearchList for @Html.DisplayFor(item => item.SearchList.Address)?</h3>
-<form method="post">
-    <input type="hidden" asp-for="SearchList.ID" />
-    <input type="submit" value="Delete" class="btn btn-danger" />
-    <a asp-page="./SearchList">Back to SearchList</a>
-</form>
+<br />
+<div style="
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        background-color: #CADCE6;
+        padding: 2%;
+        border: 1px solid slategray;
+        border-radius: 4px;
+        box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.25);
+">
+    <h3>Delete Search List for @Html.DisplayFor(item => item.SearchList.Address)?</h3>
+    <br />
+    <form method="post">
+        <input type="hidden" asp-for="SearchList.ID" />
+        <button type="submit">Delete Search List</button>
+        <br />
+        <br />
+        <a asp-page="./SearchList">Back to Search Lists</a>
+    </form>
+</div>
+<br />

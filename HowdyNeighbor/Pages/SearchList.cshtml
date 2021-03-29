@@ -17,14 +17,14 @@
 
 @foreach (var item in Model.SearchList)
 {
-    <h3>SearchList for @Html.DisplayFor(modelItem => item.Address)</h3>
+    <h4>Home Search Checklist for <strong>@Html.DisplayFor(modelItem => item.Address)</strong></h4>
     <form method="post" class="my-border-top table-background-color">
         <table class="table my-border">
             <tr>
                 <th class="my-border-none-left">Completed</th>
                 <th class="my-border">Moving Factor</th>
                 <th class="my-border">Information</th>
-                <th class="my-border">My Ranking</th>
+                <th class="my-border">My Rating</th>
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.CrimeImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.TrafficImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -165,8 +165,8 @@
                         {<input type="checkbox" />}
                     }
                 </td>
-                <td class="my-border-none-top">Local Traffic Density</td>
-                <td class="my-border-none-top"><a asp-page="./TrafficDensity" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-none-top">Local Traffic Flow</td>
+                <td class="my-border-none-top"><a asp-page="./TrafficDensity" asp-route-id="@item.ID">View Map</a></td>
                 <td class="my-border-bottom my-border-left">
                     @if (item.TrafficImportance == "0" || item.TrafficImportance == null)
                     {
@@ -220,7 +220,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.AgeImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -284,7 +284,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.PointsOfInterestImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -294,7 +294,7 @@
                     }
                 </td>
                 <td class="my-border-none-top">Nearby Points of Interest</td>
-                <td class="my-border-none-top"><a asp-page="./PointsOfInterest" asp-route-id="@item.ID">View Data</a></td>
+                <td class="my-border-none-top"><a asp-page="./PointsOfInterest" asp-route-id="@item.ID">View Map</a></td>
                 <td class="my-border-bottom my-border-left">
                     @if (item.PointsOfInterestImportance == "0" || item.PointsOfInterestImportance == null)
                     {
@@ -348,7 +348,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.InternetProvidersImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -412,7 +412,7 @@
             </tr>
             <tr>
                 <td class="my-border-bottom my-border-right">
-                    @if (item.SchoolImportance != null)
+                    @if (item.CostOfLivingImportance != null)
                     {
                         {<input type="checkbox" checked />}
                     }
@@ -475,6 +475,7 @@
                 </td>
             </tr>
         </table>
-        <button><a asp-page="./DeleteSearchList" asp-route-id="@item.ID">Delete</a></button>
     </form>
+    <button style="margin-bottom:50px;"><a asp-page="./DeleteSearchList" asp-route-id="@item.ID">Delete</a></button>
+
 }

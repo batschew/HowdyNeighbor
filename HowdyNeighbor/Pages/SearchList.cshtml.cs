@@ -24,8 +24,8 @@ namespace HowdyNeighbor.Pages
         {
             var searchList = from list in Context.SearchList select list;
             var currentUserId = UserManager.GetUserId(User);
-            searchList = searchList.Where(task => task.OwnerID == currentUserId);
-            SearchList = await searchList.ToListAsync();
+            searchList = searchList.Where(list => list.OwnerID == currentUserId);
+            SearchList = await searchList.OrderByDescending(list => list.ID).ToListAsync();
         }
     }
 }

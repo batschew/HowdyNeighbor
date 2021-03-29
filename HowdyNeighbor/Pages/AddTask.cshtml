@@ -12,9 +12,10 @@
     <strong>Enter date and time for task to be completed:</strong>
     <br />
     <input asp-for="ChecklistTask.Date" type="date" class="form-control" style="background-color:#ECFCFD;" />
-    <span asp-validation-for="ChecklistTask.Date" class="text-danger"></span>
+    <span asp-validation-for="ChecklistTask.Date" class="text-danger" required></span>
+    <span class="validity"></span>
     <br />
-    <input type="submit" value="Add Task" class="btn btn-primary" />
+    <button type="submit">Add Task</button>
     <br />
     <div>
         <a asp-page="MovingList">Back to Moving CheckList</a>
